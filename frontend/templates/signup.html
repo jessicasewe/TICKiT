@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <!-- Login Form -->
+            <div id="loginForm">
+                <h2>Sign Up</h2>
+                <form action="#" method="post">
+                    <label for="signupusername">Username:</label>
+                    <input type="text" id="signupusername" name="signupusername" required>
+
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="registerEmail" name="signupEmail" required>
+
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required>
+
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p class="switch-form">Already Have an Account? <a href="{{ url_for('auth.login') }}">Log In</a>.</p>
+            </div>
+
+            <!-- Register Form -->
+            <!-- <div id="signupForm" style="display: none;">
+                <h2>Sign Up</h2>
+                <form action="#" method="post">
+                    <label for="registerUsername">Username:</label>
+                    <input type="text" id="registerUsername" name="registerUsername" required>
+
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" name="registerEmail" required>
+
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" name="registerPassword" required>
+
+                    <button type="submit">Register</button>
+                </form>
+                <p class="switch-form">Already have an account? <a href="#" onclick="switchForm('loginForm')">Login here</a>.</p>
+            </div> -->
+        </div>
+    </div>
+
+    <script type="text/javascript"
+    src="{{ url_for('static', filename='app.js') }}">
+    </script>
+</body>
+</html>
