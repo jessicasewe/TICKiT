@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="app.js" defer></script>
+</head>
+<body> 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert error" role="alert" style="background-color: #f8d7da; color: #721c24;">
+                    {{ message }}
+                    <button type="button" style="background-color: #f8d7da; color: #721c24;" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% else %}
+                <div class="alert" role="alert" style="background-color: #d4edda; color: #155724;">
+                    {{ message }}
+                    <button type="button" style="background-color: #d4edda; color: #155724;" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}{% endfor %}{% endif %}{% endwith %}
+    <div class="auth-container">      
+        <div class="auth-form">
+            <!-- Login Form -->
+            <div id="loginForm">
+                <h2>Sign Up</h2>
+                <form action="#" method="post">
+                    <label for="signupUsername">Username:</label>
+                    <input type="text" id="signupUsername" name="signupUsername" required>
+
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="signupEmail" required>
+
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required>
+
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p class="switch-form">Already Have an Account? <a href="{{ url_for('auth.login') }}">Log In</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    src="{{ url_for('static', filename='app.js') }}"
+    </script>
+</body>
+</html>
