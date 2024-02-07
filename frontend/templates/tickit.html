@@ -20,10 +20,10 @@
                 <img src="static/images/doggie.jpeg" alt="doggie">
             </div>
             <div class="name">
-                <h1>Dumb Bunny</h1>
+                <h1>{{ current_user.username }}</h1>
                 <img src="static/images/check.jpg" alt="check">
             </div>
-            <span>@Cliff</span>
+            <span>@{{ current_user.username }}</span>
         </div>
         <!-- about -->
         <div class="about">
@@ -33,7 +33,7 @@
                 <span>Posts</span>
             </div> -->
             <div class="box">
-                <h4>14.3k</h4>
+                <h4>3k</h4>
                 <span>followers</span>
             </div>
             <div class="box">
@@ -213,7 +213,7 @@
                     <div class="profileImg">
                         <img src="static/images/afro.jpg" alt="user" class="cover">
                     </div>
-                    <h3>AfroNation<br><span>Cliff</span></h3>
+                    <h3>AfroNation<br><span>{{ current_user.username }}</span></h3>
                 </div>
             </div>
             <div class="imgBg">
@@ -227,7 +227,7 @@
             </div>
             <h4 class="likes">30 likes</h4>
             <h4 class="message">
-                <b>AfroNation 2024</b>
+                <b>AfroFuture 2024</b>
                 Loading.... 
                 <span>#party</span>
                 <span>#vibes</span>

@@ -8,40 +8,32 @@
     <script src="app.js" defer></script>
 </head>
 <body>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
     <div class="auth-container">
         <div class="auth-form">
             <!-- Login Form -->
             <div id="loginForm">
                 <h2>Login</h2>
-                <form action="#" method="post">
-                    <label for="loginUsername">Username:</label>
-                    <input type="text" id="loginUsername" name="loginUsername" required>
+                <form action="{{ url_for('auth.login') }}" method="post">
+                    <label for="loginEmail">Email:</label>
+                    <input type="text" id="loginEmail" name="email" required>
 
                     <label for="loginPassword">Password:</label>
-                    <input type="password" id="loginPassword" name="loginPassword" required>
+                    <input type="password" id="loginPassword" name="password" required>
 
                     <button type="submit">Login</button>
                 </form>
                 <p class="switch-form">Dont Have Have An Account? <a href="{{ url_for('auth.sign_up') }}">Sign Up</a>.</p>
             </div>
-
-            <!-- Register Form -->
-            <!-- <div id="registerForm" style="display: none;">
-                <h2>Register</h2>
-                <form action="#" method="post">
-                    <label for="registerUsername">Username:</label>
-                    <input type="text" id="registerUsername" name="registerUsername" required>
-
-                    <label for="registerEmail">Email:</label>
-                    <input type="email" id="registerEmail" name="registerEmail" required>
-
-                    <label for="registerPassword">Password:</label>
-                    <input type="password" id="registerPassword" name="registerPassword" required>
-
-                    <button type="submit">Register</button>
-                </form>
-                <p class="switch-form">Already have an account? <a href="#" onclick="switchForm('loginForm')">Login here</a>.</p>
-            </div> -->
         </div>
     </div>
 
