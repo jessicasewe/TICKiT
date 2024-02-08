@@ -49,7 +49,7 @@
                 </span>
                 feed
             </a>
-            <a href="#">
+            <a href="{{ url_for('auth.explore') }}">
                 <span class="icon">
                     <i class="ri-search-line"></i>
                 </span>
@@ -273,7 +273,8 @@
                 <div class="userImg">
                     <img src="static/images/party.jpg" alt="user" class="cover">
                 </div>
-                <input type="text" class="text" placeholder="Add a comment...">
+                <input type="text" class="text" id="commentInput" placeholder="Add a comment...">
+                <!-- <button onclick="addComment()">Add</button> -->
             </div>
             <h5 class="postTime">5 hours ago</h5>
         </div>

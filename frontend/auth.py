@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session, request, jsonify
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -23,7 +23,7 @@ def login():
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
   
 @auth.route("/logout")
 @login_required 
@@ -55,4 +55,21 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.tickit'))
 
-    return render_template("signup.html")
+    return render_template("signup.html", user=current_user)
+
+# @auth.route('/add_comment', methods=['POST'])
+# @login_required
+# def add_comment():
+#     if request.method == 'POST':
+#         comment_data = request.json.get('comment')
+#         new_comment = Comment(data=comment_data, user_id=current_user.id)
+#         db.session.add(new_comment)
+#         db.session.commit()
+#         return jsonify({'message': 'Comment added successfully'}), 200
+#     else:
+#         return jsonify({'error': 'Method not allowed'}), 405
+
+##EXPLORE PAGE
+@auth.route("/explore")
+def explore():
+    return render_template("explore.html", user=current_user)

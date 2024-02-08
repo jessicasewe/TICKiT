@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TICKiT</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <img src="static/images/TICKiT ..png" alt="TICKiT">
+        </a>
+        <!-- profile image-->
+        <div class="profile">
+            <div class="profile-img">
+                <img src="static/images/doggie.jpeg" alt="doggie">
+            </div>
+            <div class="name">
+                <h1>{{ current_user.username }}</h1>
+                <img src="static/images/check.jpg" alt="check">
+            </div>
+            <span>@{{ current_user.username }}</span>
+        </div>
+        <!-- about -->
+        <div class="about">
+            <!-- box1 -->
+            <!-- <div class="box">
+                <h4>54</h4>
+                <span>Posts</span>
+            </div> -->
+            <div class="box">
+                <h4>3k</h4>
+                <span>followers</span>
+            </div>
+            <div class="box">
+                <h4>35</h4>
+                <span>Following</span>
+            </div>
+        </div>
+        <!-- menu -->
+        <div class="menu">
+            <a href="#" class="active">
+                <span class="icon">
+                    <i class="ri-function-line"></i>
+                </span>
+                feed
+            </a>
+            <a href="explore.html">
+                <span class="icon">
+                    <i class="ri-search-line"></i>
+                </span>
+                Explore
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="ri-settings-5-line"></i>
+                </span>
+                Settings
+            </a>
+            <a href="{{ url_for('auth.login') }}">
+                <span class="icon">
+                    <i class="ri-logout-box-r-line"></i>
+                </span>
+                LogOut
+            </a>
+        </div>
+    </div>
+    <!-- main page -->
+    <div class="main-home">
+        <!-- header -->
+        <div class="header">
+            <!-- search -->
+            <div class="search">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <!-- content -->
+            <div class="header-content">
+                <button type="button" style="background-color: rgb(186, 214, 203);">
+                    <i class="ri-shopping-cart-fill"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- main post -->
+        <div class="feed">
+            <h1>Explore Events</h1>
+            <div class="feed-text">
+                <h2>Latest</h2>
+                <span>Popular</span>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="explorecard">
+                <div class="exploretop">
+                    <div class="exploreuserDeatils">
+                        <div class="exploreprofileImg">
+                            <img src="static/images/afro.jpg" alt="user" class="explorecover">
+                        </div>
+                        <h3>AfroNation<br><span>{{ current_user.username }}</span></h3>
+                    </div>
+                </div>
+                <div class="imgBg">
+                    <img src="static/images/black.jpg" alt="bg" class="cover">
+                </div>
+                <div class="btns">
+                    <div class="left">
+                        <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="likeButton(this)">
+                        <img src="static/images/chat-3-line.png" alt="comment">
+                    </div>
+                </div>
+                <h4 class="likes">AfroNation 2024</h4>
+                <h4 class="message">
+                    <b>AfroNation 2024</b>
+                    Loading.... 
+                    <span>#party</span>
+                    <span>#vibes</span>
+                </h4>
+                <h4>Price: 300 Cedis</h4>
+                <button type="button" class="order-button" onclick="orderButtonClicked()">Order</button>
+                <h5 class="postTime">2 hours ago</h5>
+            </div>
+        </div>
+        <br>
+        <!-- second card -->
+        <div class="explorecard" style="padding-top: 50px;">
+            <div class="exploretop">
+                <div class="exploreuserDeatils">
+                    <div class="exploreprofileImg">
+                        <img src="static/images/afro.jpg" alt="user" class="explorecover">
+                    </div>
+                    <h3>AfroFuture<br><span>James</span></h3>
+                </div>
+            </div>
+            <div class="imgBg">
+                <img src="static/images/black.jpg" alt="bg" class="cover">
+            </div>
+            <div class="btns">
+                <div class="left">
+                    <img src="static/images/heart-line.png" alt="heart" class="heart"  onclick="likeButton(this)">
+                    <img src="static/images/chat-3-line.png" alt="comment">
+                </div>
+            </div>
+            <h4 class="likes">AfroFuture 2024</h4>
+            <h4 class="message">
+                <b>AfroFuture 2024</b>
+                Loading......
+                <span>#enjoyment</span>
+                <span>#chillingssss</span>
+            </h4>
+                <h4>Price: 200 Cedis</h4>
+                <button type="button">Order</button>
+                <h5 class="postTime">2 hours ago</h5>
+            </div>
+            <h5 class="postTime">5 hours ago</h5>
+        </div>
+        <!-- Payment pop-up card -->
+        <div class="payment-popup" id="paymentPopup">
+            <h2 style="color: azure;">Make Payment</h2>
+            <div id="paymentDetails">
+                <!-- Placeholder for card details -->
+            </div>
+            <form id="paymentForm">
+                <label for="walletProvider" style="color: azure;">Select Wallet Provider:</label>
+                <select id="walletProvider" name="walletProvider">
+                    <option value="paypal">PayPal</option>
+                    <option value="venmo">Venmo</option>
+                    <option value="cashapp">Cash App</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <label for="walletNumber" style="color: azure;">Enter Wallet Number:</label>
+                <input type="text" id="walletNumber" name="walletNumber" required>
+                <button type="submit">Confirm Payment</button>
+            </form>
+            <button onclick="closePaymentPopup()">X</button>
+        
+    </div>
+
+    <script>
+         function logout() {
+            // logic
+            window.location.href = 'signUp.html';
+        }
+
+        // Function to toggle visibility of payment pop-up card
+        function togglePaymentPopup() {
+            var paymentPopup = document.getElementById("paymentPopup");
+            paymentPopup.style.display = paymentPopup.style.display === "none" ? "block" : "none";
+        }
+
+        // Function to close payment pop-up card
+        function closePaymentPopup() {
+            document.getElementById("paymentPopup").style.display = "none";
+        }
+
+        // Add event listener to "Order" buttons to toggle payment pop-up card
+        var orderButtons = document.querySelectorAll(".card-container button");
+        orderButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                togglePaymentPopup();
+            });
+        });
+
+        // Function to handle form submission
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var walletNumber = document.getElementById("walletNumber").value;
+            // Here you can add logic to process payment with the entered wallet number
+            console.log("Payment confirmed with wallet number:", walletNumber);
+            closePaymentPopup(); // Close payment pop-up after processing payment
+        });
+    </script>
+</body>
+</html>
