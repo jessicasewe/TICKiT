@@ -14,3 +14,14 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     comments = db.relationship('Comment')
+
+
+class Ticket(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.String(100))  
+    item_id = db.Column(db.String(100))  
+    product = db.Column(db.String(100))  
+    currency = db.Column(db.String(10))   
+    order_total = db.Column(db.Float)
+    description = db.Column(db.String(255)) 
+    checkout_url = db.Column(db.String(255))

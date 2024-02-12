@@ -1,5 +1,10 @@
+# import dbm
 import requests
-from flask import jsonify
+from flask import jsonify, redirect
+from frontend import db
+
+# from frontend import DB_NAME
+from frontend.models import Ticket
 
 # Replace these values with your actual Zeepay API credentials
 client_secret = "CcIWxNyVl3Ba5bXR7C6weToZgrLLLjrJRg956fQt"
@@ -37,15 +42,14 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
     nonce = "generate_nonce_here"  # Replace with nonce generation logic if needed
 
     body = {
-        "amount": order_total,
+        "amount": 1,
         "services": "wallet",
-        "currency": currency,
-        "reference": f"{order_id}_{item_id}",
-        "product": product,
-        "callback_url": f"https://yourdomain.com/wc-api/WC_zeepay_payment_gateway/?nonce={nonce}&order_id={order_id}",
-        "cancelUrl": "https://yourdomain.com/checkout",  # Update with your cancel URL
-        "returnUrl": f"https://yourdomain.com/order/{order_id}",  # Update with your return URL
-        "description": f"{description} - {order_id}",
+        "currency": "GHS",
+        "reference": "{{$guid}}",
+        "callback_url": "https://webhook.site/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
+        "cancelUrl": "https://webhook.site/#!/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
+        "returnUrl": "https://webhook.site/#!/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
+        "description": "Payment for fun items bought at my enterprise whiles surfing the wonder net"
     }
 
     headers = {
@@ -54,10 +58,27 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
         "Authorization": f"Bearer {token}",
     }
 
-    response = requests.post(base_url, json=body, headers=headers)
+    response = requests.post(base_url, json=body, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
-        checkout_url = response.json().get("checkout-url")
-        return jsonify({"code": 411, "checkout-url": checkout_url})
+    if response.status_code == 302:  # Redirect status code
+        redirect_url = response.headers.get('Location')
+
+        # Save ticket details to the database
+        ticket = Ticket(
+            order_id=order_id,
+            item_id=item_id,
+            product=product,
+            currency=currency,
+            order_total=order_total,
+            description=description,
+            checkout_url=redirect_url  # Save the checkout URL for reference
+        )
+        db.session.add(ticket)
+        db.session.commit()
+
+        # Instead of returning just JSON, return a redirect response
+        return redirect(redirect_url)  # Redirect to the payment gateway UI
     else:
         return jsonify({"error": "Failed to create checkout"})
+
+

@@ -154,42 +154,73 @@
                 <span>#chillingssss</span>
             </h4>
                 <h4>Price: 200 Cedis</h4>
-                <button type="button">Order</button>
+                <button type="button" onclick="orderButtonClicked()">Order</button>
                 <h5 class="postTime">2 hours ago</h5>
             </div>
             <h5 class="postTime">5 hours ago</h5>
         </div>
         <!-- Payment pop-up card -->
-        <div class="payment-popup" id="paymentPopup">
+        <!-- <div class="payment-popup" id="paymentPopup">
             <h2 style="color: azure;">Make Payment</h2>
-            <div id="paymentDetails">
+            <div id="paymentDetails"> -->
                 <!-- Placeholder for card details -->
-            </div>
+            <!-- </div>
             <form id="paymentForm">
                 <label for="walletProvider" style="color: azure;">Select Wallet Provider:</label>
                 <select id="walletProvider" name="walletProvider">
                     <option value="paypal">PayPal</option>
                     <option value="venmo">Venmo</option>
-                    <option value="cashapp">Cash App</option>
+                    <option value="cashapp">Cash App</option> -->
                     <!-- Add more options as needed -->
-                </select>
+                <!-- </select>
                 <label for="walletNumber" style="color: azure;">Enter Wallet Number:</label>
                 <input type="text" id="walletNumber" name="walletNumber" required>
                 <button type="submit">Confirm Payment</button>
             </form>
-            <button onclick="closePaymentPopup()">X</button>
+            <button onclick="closePaymentPopup()">X</button> -->
+        <!-- </div> -->
         
     </div>
 
     <script>
          function logout() {
             // logic
-            window.location.href = 'signUp.html';
+            window.location.href = 'signup.html';
         }
 
-    function orderButtonClicked() {
-    window.location.href = "https://test.digitaltermination.com/api/v2/instntmny-local/transactions/3rd-party/checkout";
-    }
+        function orderButtonClicked() {
+        fetch('/create_checkout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            order_id: '123',
+            item_id: '456',
+            product: 'Product Name',
+            currency: 'GHS',
+            order_total: 1,
+            description: 'Payment for fun items bought at my enterprise while surfing the wonder net'
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.code === 302 && data['redirect-url']) {
+            window.location.href = data['redirect-url']; // Redirect to payment gateway UI
+        } else {
+            console.error('Failed to create checkout:', data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error creating checkout:', error);
+    });
+}
+
     </script>
 </body>
 </html>
