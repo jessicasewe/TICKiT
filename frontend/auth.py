@@ -32,7 +32,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 @auth.route("/signup", methods=['GET', 'POST'])
-def sign_up():
+def signup():
     if request.method == 'POST':
         username = request.form.get('signupUsername')
         email = request.form.get('signupEmail')
@@ -73,3 +73,8 @@ def sign_up():
 @auth.route("/explore")
 def explore():
     return render_template("explore.html", user=current_user)
+
+# welcome page
+@auth.route("/welcome")
+def welcome():
+    return render_template("welcome.html", user=current_user)

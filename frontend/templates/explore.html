@@ -187,33 +187,9 @@
             window.location.href = 'signUp.html';
         }
 
-        // Function to toggle visibility of payment pop-up card
-        function togglePaymentPopup() {
-            var paymentPopup = document.getElementById("paymentPopup");
-            paymentPopup.style.display = paymentPopup.style.display === "none" ? "block" : "none";
-        }
-
-        // Function to close payment pop-up card
-        function closePaymentPopup() {
-            document.getElementById("paymentPopup").style.display = "none";
-        }
-
-        // Add event listener to "Order" buttons to toggle payment pop-up card
-        var orderButtons = document.querySelectorAll(".card-container button");
-        orderButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                togglePaymentPopup();
-            });
-        });
-
-        // Function to handle form submission
-        document.getElementById("paymentForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            var walletNumber = document.getElementById("walletNumber").value;
-            // Here you can add logic to process payment with the entered wallet number
-            console.log("Payment confirmed with wallet number:", walletNumber);
-            closePaymentPopup(); // Close payment pop-up after processing payment
-        });
+    function orderButtonClicked() {
+    window.location.href = "https://test.digitaltermination.com/api/v2/instntmny-local/transactions/3rd-party/checkout";
+    }
     </script>
 </body>
 </html>
