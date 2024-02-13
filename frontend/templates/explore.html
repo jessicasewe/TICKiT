@@ -189,7 +189,7 @@
         }
 
         function orderButtonClicked() {
-        fetch('/create_checkout', {
+    fetch('/create_checkout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -199,8 +199,8 @@
             item_id: '456',
             product: 'Product Name',
             currency: 'GHS',
-            order_total: 1,
-            description: 'Payment for fun items bought at my enterprise while surfing the wonder net'
+            order_total: 0.20,
+            description: 'Payment for Afronation 2024 ticket.'
         })
     })
     .then(response => {
@@ -210,7 +210,7 @@
         return response.json();
     })
     .then(data => {
-        if (data.code === 302 && data['redirect-url']) {
+        if (data['redirect-url']) {
             window.location.href = data['redirect-url']; // Redirect to payment gateway UI
         } else {
             console.error('Failed to create checkout:', data.error);
@@ -219,8 +219,7 @@
     .catch(error => {
         console.error('Error creating checkout:', error);
     });
-}
-
+    }
     </script>
 </body>
 </html>

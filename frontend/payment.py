@@ -1,7 +1,8 @@
 # import dbm
 import requests
-from flask import jsonify, redirect
+from flask import jsonify, redirect, url_for
 from frontend import db
+import uuid
 
 # from frontend import DB_NAME
 from frontend.models import Ticket
@@ -33,6 +34,7 @@ def get_token():
 
 
 def create_checkout(order_id, item_id, product, currency, order_total, description):
+    print("aBOUT DATA")
     token = get_token()
 
     if not token:
@@ -40,12 +42,13 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
 
     base_url = "https://test.digitaltermination.com/api/v2/instntmny-local/transactions/3rd-party/checkout"
     nonce = "generate_nonce_here"  # Replace with nonce generation logic if needed
+    new_uuid = str(uuid.uuid4())
 
     body = {
-        "amount": 1,
+        "amount": 0.10,
         "services": "wallet",
         "currency": "GHS",
-        "reference": "{{$guid}}",
+        "reference": new_uuid,
         "callback_url": "https://webhook.site/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
         "cancelUrl": "https://webhook.site/#!/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
         "returnUrl": "https://webhook.site/#!/4ea2e251-e3ad-4139-b662-ba9f75eefebd",
@@ -59,9 +62,11 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
     }
 
     response = requests.post(base_url, json=body, headers=headers, allow_redirects=False)
-
-    if response.status_code == 302:  # Redirect status code
+    print(response.json())
+    if response.status_code == 200:  # Redirect status code
         redirect_url = response.headers.get('Location')
+
+        data = response.json()
 
         # Save ticket details to the database
         ticket = Ticket(
@@ -77,7 +82,7 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
         db.session.commit()
 
         # Instead of returning just JSON, return a redirect response
-        return redirect(redirect_url)  # Redirect to the payment gateway UI
+        return jsonify({"redirect-url": data["checkout-url"]})# Redirect to the payment gateway UI
     else:
         return jsonify({"error": "Failed to create checkout"})
 

@@ -3,6 +3,8 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from .payment import create_checkout
+
 
 auth = Blueprint('auth', __name__)
 
@@ -57,18 +59,6 @@ def signup():
 
     return render_template("signup.html", user=current_user)
 
-# @auth.route('/add_comment', methods=['POST'])
-# @login_required
-# def add_comment():
-#     if request.method == 'POST':
-#         comment_data = request.json.get('comment')
-#         new_comment = Comment(data=comment_data, user_id=current_user.id)
-#         db.session.add(new_comment)
-#         db.session.commit()
-#         return jsonify({'message': 'Comment added successfully'}), 200
-#     else:
-#         return jsonify({'error': 'Method not allowed'}), 405
-
 ##EXPLORE PAGE
 @auth.route("/explore")
 def explore():
@@ -78,3 +68,18 @@ def explore():
 @auth.route("/welcome")
 def welcome():
     return render_template("welcome.html", user=current_user)
+
+# create_checkout
+@auth.route("/create_checkout", methods=['POST'])
+def checkout():
+    request_data = request.get_json()
+    
+    order_id = request_data.get('order_id')
+    item_id = request_data.get('item_id')
+    product = request_data.get('product')
+    currency = request_data.get('currency')
+    order_total = request_data.get('order_total')
+    description = request_data.get('description')
+    
+    response = create_checkout(order_id,item_id,product,currency,order_total,description)
+    return response
