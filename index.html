@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Portfolio Project</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            color: white;
+        }
+        .logo img {
+            max-width: 100px; /* Adjust size as needed */
+            height: auto;
+        }
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+        .nav-buttons a {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #4cd490;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-buttons a:hover {
+            background-color: #356e52;
         }
         .container {
             max-width: 800px;
@@ -26,33 +55,109 @@
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #4cd490;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #356e52;
         }
         .project-img {
             max-width: 100%;
             height: auto;
             margin-bottom: 30px;
         }
+
+        .myButton {
+        border: 5px solid #4cd490; 
+        border-radius: 12px;
+        background: #4cd490;
+        color: #fdfffd;
+        display:inline-block;
+        padding:20px;
+        }
+        .myButton:hover {
+        border: 5px solid #356e52;
+        border-radius: 12px;
+        color:black;
+        background:#56b989;
+        }
+
+        .content {
+            display: flex; 
+            position: relative; 
+            width: 100%;
+            flex-direction: column; 
+            /* background: url(TICKiT.png) no-repeat; */
+            background-size: cover;
+            background-position: center;
+            max-width: 650px;
+            margin: 60px 100px;
+        }
+
+        .content2 {
+            display: flex; 
+            position: relative; 
+            width: 100%;
+            flex-direction: column; 
+            /* background: url(TICKiT.png) no-repeat; */
+            background-size: cover;
+            background-position: center;
+            max-width: 650px;
+            margin: 50px 550px; /* Center the content horizontally */
+            text-align: right;
+        }
+
+        .content .info h2 {
+            font-size: 55px; 
+            color: #4cd490;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .content2 .info2 h2 {
+            font-size: 55px; 
+            color: #4cd490;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Your Portfolio Project</h1>
-        <img src="TICKiT.png" alt="Project Screenshot" class="project-img">
-        <p>Welcome to my Portfolio Project landing page! This project showcases my skills and expertise as a developer.</p>
-        <p>My name is [Your Name] and I'm passionate about building innovative web applications that solve real-world problems.</p>
-        <p>Click the buttons below to explore my deployed app and GitHub repository:</p>
-        <a href="link_to_your_deployed_app" class="btn">View Deployed App</a>
-        <a href="link_to_your_github_repository" class="btn">GitHub Repository</a>
+    <div class="navbar">
+        <div class="logo">
+            <img src="TICKiT.png" alt="Logo">
+        </div>
+        <div class="nav-buttons">
+            <a href="link_to_login_page" class="btn">Login</a>
+            <a href="link_to_sign_up_page" class="btn">Sign Up</a>
+        </div>
     </div>
+    <div class="container">
+        <h2 style="padding-top: 30px;">TICKiT, ClickiT, EnjoyiT</h2>
+        <img src="tickit (2).png" alt="Project Screenshot" class="project-img"> <br>
+        <a class="myButton" href="https://html-buttons.com/button-generator">Deplyed WebPage</a>
+        <a class="myButton" href="https://html-buttons.com/button-generator">GitHub Repository</a>
+        <br>
+        <br>
+        <br>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="pause1.jpg" style="width: 900px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="info">
+        <h2>About the Project</h2>
+        <p>This project, TICKiT, is a web application designed to simplify ticket booking processes for events, concerts, movies, and more. With TICKiT, users can browse through available events, select their preferred tickets, and securely purchase them online.</p>
+        <p>TICKiT is built using modern web technologies such as HTML, CSS, JavaScript, and Python. It leverages frameworks and libraries like Flask and Bootstrap to create a seamless user experience.</p>
+        </div>
+    </div>
+
+    <div class="content2">
+        <div class="info2">
+            <h2>About the Developer</h2>
+            <p>Hi, we're Jessica and Vaness, the developers behind TICKiT. We are passionate web developers with a keen interest in creating innovative solutions to real-world problems. We love exploring new technologies and applying them to build intuitive and user-friendly web applications.</p>
+            <p>Connect with us on <a href="https://github.com/jessicasewe">GitHub</a> to explore more of our projects and contributions!</p>
+        </div>
+    </div>
+    <footer>        
+    </footer>
 </body>
 </html>

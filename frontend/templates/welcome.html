@@ -3,55 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Your Portfolio Project</title>
     <style>
-       body, html {
-            height: 100%;
-            margin: 0;
+        body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-        .background-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
-            z-index: -1; /* Ensure it's behind other content */
-        }
-        .background-image {
-            width: 100%;
-            height: 100%;
-            background-image: url('path_to_your_background_image.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(50%); /* Reduce brightness of background image */
-        }
-        .content {
-            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
             text-align: center;
-            z-index: 1; /* Ensure it's above the background overlay */
         }
-        .content h1 {
-            font-size: 3em;
+        h1 {
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
-        .content p {
-            font-size: 1.5em;
+        p {
+            font-size: 1.2em;
             margin-bottom: 30px;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .btn {
             display: inline-block;
@@ -66,16 +37,22 @@
         .btn:hover {
             background-color: #356e52;
         }
+        .project-img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to TICKiT</h1>
-        <p>Discover and share your experiences with TICKiT.</p>
-        <div class="buttons">
-            <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
-            <a href="{{ url_for('auth.signup') }}" class="btn">Sign Up</a>
-        </div>
+        <h1>Your Portfolio Project</h1>
+        <img src="TICKiT.png" alt="Project Screenshot" class="project-img">
+        <p>Welcome to my Portfolio Project landing page! This project showcases my skills and expertise as a developer.</p>
+        <p>My name is [Your Name] and I'm passionate about building innovative web applications that solve real-world problems.</p>
+        <p>Click the buttons below to explore my deployed app and GitHub repository:</p>
+        <a href="link_to_your_deployed_app" class="btn">View Deployed App</a>
+        <a href="link_to_your_github_repository" class="btn">GitHub Repository</a>
     </div>
 </body>
 </html>
