@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to TICKiT</title>
-        <style>
-       body, html {
+    <style>
+        body, html {
             height: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
@@ -17,6 +17,9 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            background-image: url('path_to_your_background_image.jpg');
+            background-size: cover;
+            background-position: center;
         }
         .background-overlay {
             position: absolute;
@@ -26,14 +29,6 @@
             height: 100%;
             background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
             z-index: -1; /* Ensure it's behind other content */
-        }
-        .background-image {
-            width: 100%;
-            height: 100%;
-            background-image: url('path_to_your_background_image.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(50%); /* Reduce brightness of background image */
         }
         .content {
             color: white;
@@ -67,15 +62,17 @@
             background-color: #356e52;
         }
     </style>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to TICKiT</h1>
-        <p>Discover and share your experiences with TICKiT.</p>
-        <div class="buttons">
-            <a href="frontend/templates/login.html" class="btn">Login</a>
-            <a href="{{ url_for('auth.signup') }}" class="btn">Sign Up</a>
+        <div class="background-overlay"></div>
+        <div class="content">
+            <h1>Welcome to TICKiT</h1>
+            <p>Discover and share your experiences with TICKiT.</p>
+            <div class="buttons">
+                <a href="frontend/templates/login.html" class="btn">Login</a>
+                <a href="{{ url_for('auth.signup') }}" class="btn">Sign Up</a>
+            </div>
         </div>
     </div>
 </body>
