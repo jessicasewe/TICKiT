@@ -43,13 +43,13 @@
         </div>
         <!-- menu -->
         <div class="menu">
-            <a href="#" class="active">
+            <a href="/">
                 <span class="icon">
                     <i class="ri-function-line"></i>
                 </span>
                 feed
             </a>
-            <a href="explore.html">
+            <a href="{{ url_for('auth.explore') }}"class="active">
                 <span class="icon">
                     <i class="ri-search-line"></i>
                 </span>
@@ -79,11 +79,21 @@
                 <input type="text" placeholder="Search">
             </div>
             <!-- content -->
-            <div class="header-content">
-                <button type="button" style="background-color: rgb(186, 214, 203);">
-                    <i class="ri-shopping-cart-fill"></i>
+            <!-- <div class="header-content">
+                <a href="{{ url_for('auth.purchased_tickets') }}">
+                    <button type="button" style="background-color: rgb(186, 214, 203);">
+                        <i class="ri-shopping-cart-fill"></i>
+                    </button>
+                </a>
+            </div> -->
+            <div class="dropdown">
+                <button onclick="toggleDropdown()">
+                    <i class="ri-shopping-cart-fill"></i> Orders
                 </button>
+                <div id="dropdownMenu" class="dropdown-content">
+                </div>
             </div>
+            
         </div>
         
         <!-- main post -->
@@ -132,13 +142,13 @@
             <div class="exploretop">
                 <div class="exploreuserDeatils">
                     <div class="exploreprofileImg">
-                        <img src="static/images/afro.jpg" alt="user" class="explorecover">
+                        <img src="static/images/afrofuture.jpg" alt="user" class="explorecover">
                     </div>
                     <h3>AfroFuture<br><span>James</span></h3>
                 </div>
             </div>
             <div class="imgBg">
-                <img src="static/images/black.jpg" alt="bg" class="cover">
+                <img src="static/images/party.jpg" alt="bg" class="cover">
             </div>
             <div class="btns">
                 <div class="left">
@@ -157,7 +167,6 @@
                 <button type="button" onclick="orderButtonClicked()">Order</button>
                 <h5 class="postTime">2 hours ago</h5>
             </div>
-            <h5 class="postTime">5 hours ago</h5>
         </div>
         <!-- Payment pop-up card -->
         <!-- <div class="payment-popup" id="paymentPopup">
@@ -197,7 +206,7 @@
         body: JSON.stringify({
             order_id: '123',
             item_id: '456',
-            product: 'Product Name',
+            product: 'Afronation',
             currency: 'GHS',
             order_total: 0.20,
             description: 'Payment for Afronation 2024 ticket.'
@@ -220,6 +229,52 @@
         console.error('Error creating checkout:', error);
     });
     }
+
+    function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+            } else {
+                dropdownMenu.style.display = "block";
+            }
+        }
+
+        // Close dropdown menu if user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown button')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") {
+                        openDropdown.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function fetchPurchasedTickets() {
+    fetch('/purchased_tickets')
+        .then(response => response.text())
+        .then(data => {
+            // Split the response data into an array of ticket names
+            const ticketNames = data.split('\n');
+
+            // Get the dropdown menu element
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            // Clear existing dropdown items
+            dropdownMenu.innerHTML = '';
+
+            // Add each ticket name as a dropdown item
+            ticketNames.forEach(name => {
+                dropdownMenu.innerHTML += `<a href="#">${name}</a>`;
+            });
+        })
+        .catch(error => console.error('Error fetching purchased tickets:', error));
+}
+
+    // Call the fetchPurchasedTickets function when the page loads
+    window.onload = fetchPurchasedTickets;
     </script>
 </body>
 </html>

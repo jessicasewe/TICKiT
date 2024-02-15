@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session, request, jsonify
-from .models import User
+from .models import User, Ticket
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from .payment import create_checkout
+from frontend.models import Ticket
 
 
 auth = Blueprint('auth', __name__)
@@ -83,3 +84,19 @@ def checkout():
     
     response = create_checkout(order_id,item_id,product,currency,order_total,description)
     return response
+
+
+#purchased tickets
+@auth.route("/purchased_tickets")
+def purchased_tickets():
+    # Fetch the purchased ticket names from the database
+    purchased_tickets = Ticket.query.with_entities(Ticket.product).filter_by(user_id=current_user.id).all()
+
+    # Extract the product names from the fetched tickets
+    ticket_names = '\n'.join([ticket.product for ticket in purchased_tickets])
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    return ticket_names, 200, headers
+

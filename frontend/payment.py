@@ -34,7 +34,7 @@ def get_token():
 
 
 def create_checkout(order_id, item_id, product, currency, order_total, description):
-    print("aBOUT DATA")
+    # print("aBOUT DATA")
     token = get_token()
 
     if not token:
@@ -76,7 +76,8 @@ def create_checkout(order_id, item_id, product, currency, order_total, descripti
             currency=currency,
             order_total=order_total,
             description=description,
-            checkout_url=redirect_url  # Save the checkout URL for reference
+            checkout_url=redirect_url,
+              # Save the checkout URL for reference
         )
         db.session.add(ticket)
         db.session.commit()

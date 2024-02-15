@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
@@ -13,6 +14,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(150), unique=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
+    tickets = db.relationship('Ticket')
     comments = db.relationship('Comment')
 
 
@@ -25,3 +27,6 @@ class Ticket(db.Model):
     order_total = db.Column(db.Float)
     description = db.Column(db.String(255)) 
     checkout_url = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, ForeignKey('user.id'))
+
+    # user = relationship('User', backref='tickets')
