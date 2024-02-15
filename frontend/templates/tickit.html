@@ -80,11 +80,7 @@
             </div>
             <!-- content -->
             <div class="header-content">
-                <!-- <i class="ri-notification-4-fill"></i> -->
-                <!-- <a href="#" class="btn">
-                    <i class="ri-add-circle-fill"></i>
-                    <div class="btn-text">Add photo</div>
-                </a> -->
+
             </div>
         </div>
         
@@ -98,78 +94,6 @@
         </div>
         <!-- posts -->
         <!-- <div class="main-posts">
-            <div class="post-box">
-                <img src="images/pine.jpeg" alt="">
-
-                <div class="post-info">
-                    <div class="post-profile">
-                        <div class="post-img">
-                            <img src="images/doggie.jpeg" alt="doggie">
-                        </div>
-                        <h3>DettyRave</h3>
-                    </div>
-                    <div class="likes">
-                        <i class="ri-heart-line"></i>
-                        <span>45k</span>
-                        <i class="ri-chat-3-line"></i>
-                        <span>44</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-box">
-                <img src="images/drinks.webp" alt="">
-
-                <div class="post-info">
-                    <div class="post-profile">
-                        <div class="post-img">
-                            <img src="images/doggie.jpeg" alt="doggie">
-                        </div>
-                        <h3>AfroNation</h3>
-                    </div>
-                    <div class="likes">
-                        <i class="ri-heart-line"></i>
-                        <span>20k</span>
-                        <i class="ri-chat-3-line"></i>
-                        <span>34</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-box">
-                <img src="images/afrofuture.jpg" alt="">
-
-                <div class="post-info">
-                    <div class="post-profile">
-                        <div class="post-img">
-                            <img src="images/doggie.jpeg" alt="doggie">
-                        </div>
-                        <h3>PentHallWeek</h3>
-                    </div>
-                    <div class="likes">
-                        <i class="ri-heart-line"></i>
-                        <span>12k</span>
-                        <i class="ri-chat-3-line"></i>
-                        <span>12</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-box" style="padding-top: 50px;">
-                <img src="images/jhus.jpg" alt="">
-
-                <div class="post-info">
-                    <div class="post-profile">
-                        <div class="post-img">
-                            <img src="images/doggie.jpeg" alt="doggie">
-                        </div>
-                        <h3>31stNight</h3>
-                    </div>
-                    <div class="likes">
-                        <i class="ri-heart-line"></i>
-                        <span>12k</span>
-                        <i class="ri-chat-3-line"></i>
-                        <span>12</span>
-                    </div>
-                </div>
-            </div>
             <div class="post-box" style="padding-top: 50px;">
                 <img src="images/black.jpg" alt="">
 
@@ -213,19 +137,19 @@
                     <div class="profileImg">
                         <img src="static/images/afro.jpg" alt="user" class="cover">
                     </div>
-                    <h3>AfroNation<br><span>{{ current_user.username }}</span></h3>
+                    <h3>AfroNation<br><span>Cliff</span></h3>
                 </div>
             </div>
             <div class="imgBg">
-                <img src="static/images/black.jpg" alt="bg" class="cover">
+                <img src="static/images/drinks.webp" alt="bg" class="cover">
             </div>
             <div class="btns">
                 <div class="left">
-                    <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="likeButton(this)">
-                    <img src="static/images/chat-3-line.png" alt="comment">
+                    <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="toggleLike(this)">
+                    <span class="like-count">30 </span> <!-- Add a span element to hold the like count -->
                 </div>
             </div>
-            <h4 class="likes">30 likes</h4>
+            <!-- <h4 class="likes">30 likes</h4> -->
             <h4 class="message">
                 <b>AfroFuture 2024</b>
                 Loading.... 
@@ -235,7 +159,7 @@
             <h4 class="comments">View all 10 comments</h4>
             <div class="addComments">
                 <div class="userImg">
-                    <img src="static/images/party.jpg" alt="user" class="cover">
+                    <img src="static/images/jhus.jpg" alt="user" class="cover">
                 </div>
                 <input type="text" class="text" placeholder="Add a comment...">
             </div>
@@ -247,26 +171,26 @@
             <div class="top">
                 <div class="userDeatils">
                     <div class="profileImg">
-                        <img src="static/images/afro.jpg" alt="user" class="cover">
+                        <img src="static/images/pine.jpeg" alt="user" class="cover">
                     </div>
                     <h3>AfroFuture<br><span>James</span></h3>
                 </div>
             </div>
             <div class="imgBg">
-                <img src="static/images/black.jpg" alt="bg" class="cover">
+                <img src="static/images/afrofuture.jpg" alt="bg" class="cover">
             </div>
             <div class="btns">
                 <div class="left">
-                    <img src="static/images/heart-line.png" alt="heart" class="heart"  onclick="likeButton(this)">
-                    <img src="static/images/chat-3-line.png" alt="comment">
+                    <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="toggleLike(this)">
+                    <span class="like-count">29</span> <!-- Add a span element to hold the like count -->
                 </div>
             </div>
-            <h4 class="likes">10 likes</h4>
+            <!-- <h4 class="likes">10 likes</h4> -->
             <h4 class="message">
-                <b>Nikhil Kumar</b>
-                Captain America: Civil War
-                <span>#ironman</span>
-                <span>#captainamerica</span>
+                <b>AfroFuture</b>
+                Loading...
+                <span>#vibes</span>
+                <span>#chillings</span>
             </h4>
             <h4 class="comments">View all 3 comments</h4>
             <div class="addComments">
@@ -285,6 +209,59 @@
             // logic
             window.location.href = 'signUp.html';
         }
+
+        // Get the input element and cards to filter
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    // Add event listener for input event
+    searchInput.addEventListener('input', function () {
+        const searchText = this.value.toLowerCase(); // Get search text and convert to lowercase
+
+        // Loop through each card
+        cards.forEach(card => {
+            const h3Text = card.querySelector('h3').innerText.toLowerCase(); // Get text from h3 element
+
+            // Debugging: Log the values to see what's happening
+            console.log('Search Text:', searchText);
+            console.log('h3 Text:', h3Text);
+
+            // Check if the h3 text contains the search text
+            if (h3Text.includes(searchText)) {
+                card.style.display = 'block'; // Show the card if it matches the search
+            } else {
+                card.style.display = 'none'; // Hide the card if it doesn't match
+            }
+        });
+    });
+
+    function toggleLike(heart) {
+    // Toggle the 'liked' class to change the color of the heart icon
+    heart.classList.toggle('liked');
+
+    // If the heart icon is now liked, change its source to the filled heart icon; otherwise, change it back to the outline heart icon
+    if (heart.classList.contains('liked')) {
+        heart.src = 'static/images/heart-fill.png';
+    } else {
+        heart.src = 'static/images/heart-line.png';
+    }
+
+    // Get the like count element
+    const likeCountElement = heart.nextElementSibling;
+
+    // Get the current like count
+    let likeCount = parseInt(likeCountElement.textContent);
+
+    // If the heart icon is now liked, increase the like count; otherwise, decrease it
+    if (heart.classList.contains('liked')) {
+        likeCount++;
+    } else {
+        likeCount--;
+    }
+
+    // Update the like count text content
+    likeCountElement.textContent = likeCount;
+    }
     </script>
 </body>
 </html>

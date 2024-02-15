@@ -120,11 +120,11 @@
                 </div>
                 <div class="btns">
                     <div class="left">
-                        <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="likeButton(this)">
-                        <img src="static/images/chat-3-line.png" alt="comment">
+                        <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="toggleLike(this)">
+                        <span class="like-count">29</span> <!-- Add a span element to hold the like count -->
                     </div>
                 </div>
-                <h4 class="likes">AfroNation 2024</h4>
+                <!-- <h4 class="likes">AfroNation 2024</h4> -->
                 <h4 class="message">
                     <b>AfroNation 2024</b>
                     Loading.... 
@@ -152,11 +152,11 @@
             </div>
             <div class="btns">
                 <div class="left">
-                    <img src="static/images/heart-line.png" alt="heart" class="heart"  onclick="likeButton(this)">
-                    <img src="static/images/chat-3-line.png" alt="comment">
+                    <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="toggleLike(this)">
+                    <span class="like-count">29</span> <!-- Add a span element to hold the like count -->
                 </div>
             </div>
-            <h4 class="likes">AfroFuture 2024</h4>
+            <!-- <h4 class="likes">AfroFuture 2024</h4> -->
             <h4 class="message">
                 <b>AfroFuture 2024</b>
                 Loading......
@@ -275,6 +275,35 @@
 
     // Call the fetchPurchasedTickets function when the page loads
     window.onload = fetchPurchasedTickets;
+
+
+    function toggleLike(heart) {
+    // Toggle the 'liked' class to change the color of the heart icon
+    heart.classList.toggle('liked');
+
+    // If the heart icon is now liked, change its source to the filled heart icon; otherwise, change it back to the outline heart icon
+    if (heart.classList.contains('liked')) {
+        heart.src = 'static/images/heart-fill.png';
+    } else {
+        heart.src = 'static/images/heart-line.png';
+    }
+
+    // Get the like count element
+    const likeCountElement = heart.nextElementSibling;
+
+    // Get the current like count
+    let likeCount = parseInt(likeCountElement.textContent);
+
+    // If the heart icon is now liked, increase the like count; otherwise, decrease it
+    if (heart.classList.contains('liked')) {
+        likeCount++;
+    } else {
+        likeCount--;
+    }
+
+    // Update the like count text content
+    likeCountElement.textContent = likeCount;
+}
     </script>
 </body>
 </html>

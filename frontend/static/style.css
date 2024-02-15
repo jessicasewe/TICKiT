@@ -162,15 +162,22 @@ body {
 }
 
 .search input{
+    flex: 1;
     border: none;
     outline: none;
     background: transparent;
     margin-left: 7px;
 }
 
-.search o {
+/* .search o {
     display: flex;
     align-items: center;
+} */
+
+@media screen and (max-width: 768px) {
+    .search {
+        width: 150px;
+    }
 }
 
 .header-content {
@@ -526,4 +533,9 @@ a:hover {
     cursor: pointer;
     padding: 10px 16px;
     margin-left: 10px;
+}
+
+/* CSS to change the color of the like button when liked */
+.like-button.liked {
+    color: red;
 }
