@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio Project</title>
+    <title>My Portfolio Project</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body {
@@ -125,14 +125,14 @@
             <img src="TICKiT.png" alt="Logo">
         </div>
         <div class="nav-buttons">
-            <a href="frontend/templates/login.html" class="btn">Login</a>
-            <a href="frontend/templates/signup.html" class="btn">Sign Up</a>
+            <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
+            <a href="{{ url_for('auth.signup') }}" class="btn">Sign Up</a>
         </div>
     </div>
     <div class="container">
         <h2 style="padding-top: 30px;">TICKiT, ClickiT, EnjoyiT</h2>
         <img src="tickit (2).png" alt="Project Screenshot" class="project-img"> <br>
-        <a class="myButton" href="https://html-buttons.com/button-generator">Deplyed WebPage</a>
+        <a class="myButton" href="http://tickit.strapbook.tech">Deplyed WebPage</a>
         <a class="myButton" href="https://github.com/jessicasewe/TICKiT">GitHub Repository</a>
         <br>
         <br>
