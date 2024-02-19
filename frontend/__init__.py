@@ -1,5 +1,4 @@
 from flask import Flask;
-# import request
 from flask_sqlalchemy import SQLAlchemy;
 from os import path
 from flask_login import LoginManager
