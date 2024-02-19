@@ -23,5 +23,3 @@ class Ticket(db.Model):
     description = db.Column(db.String(255)) 
     checkout_url = db.Column(db.String(255))
     user_id = db.Column(db.Integer, ForeignKey('user.id'))
-
-    # user = relationship('User', backref='tickets')

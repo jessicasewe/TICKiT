@@ -3,13 +3,15 @@ import requests
 from flask import jsonify, redirect, url_for
 from frontend import db
 import uuid
-
+from dotenv import load_dotenv
+import os
 # from frontend import DB_NAME
 from frontend.models import Ticket
 
 # Replace these values with your actual Zeepay API credentials
-client_secret = "CcIWxNyVl3Ba5bXR7C6weToZgrLLLjrJRg956fQt"
-client_id = 86
+load_dotenv()
+client_secret = os.environ.get("CLIENT_SECRET")
+client_id = os.environ.get("CLIENT_ID")
 username = "internal-qa@myzeepay.com"
 password = "dumbdumb123"
 
