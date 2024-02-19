@@ -169,10 +169,6 @@ body {
     margin-left: 7px;
 }
 
-/* .search o {
-    display: flex;
-    align-items: center;
-} */
 
 @media screen and (max-width: 768px) {
     .search {
@@ -212,7 +208,6 @@ body {
     margin-right: 1rem;
 }
 
-
 .card{
     position: relative;
     width: 500px;
@@ -222,15 +217,18 @@ body {
     padding: 20px;
     margin: 0 auto;
 }
+
 .card .top{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .card .top .userDeatils{
     display: flex;
     align-items: center;
 }
+
 .card .top .userDeatils .profileImg{
     position: relative;
     width: 40px;
@@ -239,6 +237,7 @@ body {
     margin-right: 8px;
     overflow: hidden;
 }
+
 .cover{
     position: absolute;
     top: 0;
@@ -249,6 +248,7 @@ body {
     object-position: center;
     cursor: pointer;
 }
+
 .card .top .userDeatils h3{
     font-size: 18px;
     color: #4d4d4f;
@@ -278,41 +278,50 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .btns img{
     max-width: 24px;
     cursor: pointer;
 }
+
 .btns .left img{
     margin-right: 8px;
 }
+
 .likes{
     margin-top: 5px;
     font-size: 1em;
     color: #4d4d4f;
 }
+
 .message{
     font-weight: 400;
     margin-top: 5px;
     color: #777;
     line-height: 1.5em;
 }
+
 .message b{
     color: #262626;
 }
+
 .message span{
     color: #1d92ff;
     cursor: pointer;
 }
+
 .comments{
     margin-top: 10px;
     align-items: center;
     color: #999;
 }
+
 .addComments{
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
+
 .addComments .userImg{
     position: relative;
     min-width: 30px;
@@ -321,6 +330,7 @@ body {
     overflow: hidden;
     margin-right: 8px;
 }
+
 .addComments .text{
     width: 100%;
     border: none;
@@ -329,17 +339,19 @@ body {
     font-size: 18px;
     color: #262626;
 }
+
 .addComments .text::placeholder{
     color: #777;
 }
+
 .postTime{
     margin-top: 10px;
     font-weight: 500;
     color: #777;
 }
 
-/* log in and sign up  */
 
+/* log in and sign up  */
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
@@ -414,8 +426,8 @@ a:hover {
     text-decoration: underline;
 }
 
-/* explorecard */
 
+/* explorecard */
 .explorecard{
     position: relative;
     width: 500px;
@@ -466,6 +478,7 @@ a:hover {
     justify-content: center;
 }
 
+
 /* Styles for payment pop-up card */
 .payment-popup {
    /* Your existing styles */
@@ -493,6 +506,7 @@ a:hover {
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 /* Dropdown Button Styling */
 .dropdown {
@@ -526,6 +540,7 @@ a:hover {
     display: block;
 }
 
+
 /* Adjusting Button Style */
 .dropdown button {
     background-color: rgb(186, 214, 203);
@@ -533,9 +548,4 @@ a:hover {
     cursor: pointer;
     padding: 10px 16px;
     margin-left: 10px;
-}
-
-/* CSS to change the color of the like button when liked */
-.like-button.liked {
-    color: red;
 }

@@ -88,6 +88,7 @@ def checkout():
 
 #purchased tickets
 @auth.route("/purchased_tickets")
+@login_required
 def purchased_tickets():
     # Fetch the purchased ticket names from the database
     purchased_tickets = Ticket.query.with_entities(Ticket.product).filter_by(user_id=current_user.id).all()

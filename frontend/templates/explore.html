@@ -27,11 +27,6 @@
         </div>
         <!-- about -->
         <div class="about">
-            <!-- box1 -->
-            <!-- <div class="box">
-                <h4>54</h4>
-                <span>Posts</span>
-            </div> -->
             <div class="box">
                 <h4>3k</h4>
                 <span>followers</span>
@@ -78,14 +73,6 @@
                 <i class="ri-search-line"></i>
                 <input type="text" placeholder="Search">
             </div>
-            <!-- content -->
-            <!-- <div class="header-content">
-                <a href="{{ url_for('auth.purchased_tickets') }}">
-                    <button type="button" style="background-color: rgb(186, 214, 203);">
-                        <i class="ri-shopping-cart-fill"></i>
-                    </button>
-                </a>
-            </div> -->
             <div class="dropdown">
                 <button onclick="toggleDropdown()">
                     <i class="ri-shopping-cart-fill"></i> Orders
@@ -153,10 +140,9 @@
             <div class="btns">
                 <div class="left">
                     <img src="static/images/heart-line.png" alt="heart" class="heart" onclick="toggleLike(this)">
-                    <span class="like-count">29</span> <!-- Add a span element to hold the like count -->
+                    <span class="like-count">29</span> 
                 </div>
             </div>
-            <!-- <h4 class="likes">AfroFuture 2024</h4> -->
             <h4 class="message">
                 <b>AfroFuture 2024</b>
                 Loading......
@@ -168,26 +154,6 @@
                 <h5 class="postTime">2 hours ago</h5>
             </div>
         </div>
-        <!-- Payment pop-up card -->
-        <!-- <div class="payment-popup" id="paymentPopup">
-            <h2 style="color: azure;">Make Payment</h2>
-            <div id="paymentDetails"> -->
-                <!-- Placeholder for card details -->
-            <!-- </div>
-            <form id="paymentForm">
-                <label for="walletProvider" style="color: azure;">Select Wallet Provider:</label>
-                <select id="walletProvider" name="walletProvider">
-                    <option value="paypal">PayPal</option>
-                    <option value="venmo">Venmo</option>
-                    <option value="cashapp">Cash App</option> -->
-                    <!-- Add more options as needed -->
-                <!-- </select>
-                <label for="walletNumber" style="color: azure;">Enter Wallet Number:</label>
-                <input type="text" id="walletNumber" name="walletNumber" required>
-                <button type="submit">Confirm Payment</button>
-            </form>
-            <button onclick="closePaymentPopup()">X</button> -->
-        <!-- </div> -->
         
     </div>
 
@@ -198,7 +164,7 @@
         }
 
         function orderButtonClicked() {
-    fetch('/create_checkout', {
+        fetch('/create_checkout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -252,10 +218,10 @@
             }
         }
 
-        function fetchPurchasedTickets() {
-    fetch('/purchased_tickets')
-        .then(response => response.text())
-        .then(data => {
+    function fetchPurchasedTickets() {
+        fetch('/purchased_tickets')
+            .then(response => response.text())
+            .then(data => {
             // Split the response data into an array of ticket names
             const ticketNames = data.split('\n');
 
@@ -303,7 +269,7 @@
 
     // Update the like count text content
     likeCountElement.textContent = likeCount;
-}
+    }
     </script>
 </body>
 </html>
